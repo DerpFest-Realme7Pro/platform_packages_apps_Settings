@@ -32,7 +32,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.UserManager;
 import android.service.oemlock.OemLockManager;
 import android.telephony.TelephonyManager;
@@ -49,8 +48,6 @@ import org.mockito.Answers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
-import org.robolectric.util.ReflectionHelpers;
 
 @RunWith(RobolectricTestRunner.class)
 public class OemUnlockPreferenceControllerTest {
@@ -96,19 +93,11 @@ public class OemUnlockPreferenceControllerTest {
     }
 
     @Test
-    @Config(qualifiers = "mcc999")
-    public void OemUnlockPreferenceController_shouldNotCrashInEmulatorEngBuild() {
-        ReflectionHelpers.setStaticField(Build.class, "IS_EMULATOR", true);
-        ReflectionHelpers.setStaticField(Build.class, "IS_ENG", true);
-
-        new OemUnlockPreferenceController(mContext, mActivity, mFragment);
-    }
-
-    @Test
-    @Config(qualifiers = "mcc999")
-    public void OemUnlockPreferenceController_shouldNotCrashInOtherBuild() {
-        ReflectionHelpers.setStaticField(Build.class, "IS_EMULATOR", false);
-        ReflectionHelpers.setStaticField(Build.class, "IS_ENG", false);
+    public void OemUnlockPreferenceController_shouldNotCrashWhenMissingFEATURE_TELEPHONY_CARRIERLOCK() {
+        when(mContext.getPackageManager().hasSystemFeature(PackageManager
+                    .FEATURE_TELEPHONY_CARRIERLOCK)).thenReturn(false);
+        when(mContext.getSystemService(Context.OEM_LOCK_SERVICE)).thenThrow
+            (new RuntimeException());
 
         new OemUnlockPreferenceController(mContext, mActivity, mFragment);
     }
