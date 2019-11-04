@@ -42,6 +42,26 @@
         android:selectable="false"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.AOSIPVersionPreferenceController"/>
+    <!-- Build date, parsed by locale -->
+    <Preference
+        android:key="build_date"
+        android:title="@string/derp_build_date"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.ROMBuildDatePreferenceController"/>
+
+    <!-- ROM Release type -->
+    <Preference
+        android:key="release_type"
+        android:title="@string/derp_ri_title_buildtype"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.ROMBuildTypePreferenceController"/>
+
+    <!-- ROM Maintainer, in case of Derped Builds-->
+    <Preference
+        android:key="who_to_blame"
+        android:title="@string/device_maintainer"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.ROMMaintainerPreferenceController"/>
 
     <!-- Security patch -->
     <Preference
@@ -58,13 +78,13 @@
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.MainlineModuleVersionPreferenceController"/>-->
 
-    <!-- AOSiP Version -->
+    <!-- AOSiP Version
     <Preference
         android:key="aosip_version"
         android:title="@string/aosip_version"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.AOSiPVersionPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.AOSiPVersionPreferenceController"/ -->
 
     <!-- Baseband -->
     <Preference
