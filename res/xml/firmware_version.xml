@@ -44,8 +44,9 @@
         settings:controller="com.android.settings.deviceinfo.firmwareversion.AOSIPVersionPreferenceController"/>
     <!-- Build date, parsed by locale -->
     <Preference
-        android:key="build_date"
+        android:key="derp_build_date"
         android:title="@string/derp_build_date"
+        android:summary="@string/derp_build_date_default"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.ROMBuildDatePreferenceController"/>
 
@@ -53,6 +54,7 @@
     <Preference
         android:key="release_type"
         android:title="@string/derp_ri_title_buildtype"
+        android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.ROMBuildTypePreferenceController"/>
 

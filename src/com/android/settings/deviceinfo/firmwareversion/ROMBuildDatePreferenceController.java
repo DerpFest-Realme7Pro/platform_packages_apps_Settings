@@ -18,47 +18,39 @@ package com.android.settings.deviceinfo.firmwareversion;
 
 import android.content.Context;
 import android.os.SystemProperties;
-import android.text.format.DateFormat;
 import android.text.TextUtils;
 
-import com.android.settings.R;
-import com.android.settings.core.BasePreferenceController;
+import androidx.annotation.VisibleForTesting;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import com.android.settings.R;
+import com.android.settings.Utils;
+import com.android.settings.core.BasePreferenceController;
 
 public class ROMBuildDatePreferenceController  extends BasePreferenceController {
 
+    @VisibleForTesting
     private static final String TAG = "ROMBuildDatePreferenceController";
-    private static final String AOSIP_VERSION = "ro.aosip.version";
+    private static final String KEY_DERP_BUILD_DATE = "derp_build_date";
+    private static final String PROPERTY_DERP_BUILD_DATE = "ro.build.date";
 
-    public ROMBuildDatePreferenceController(Context context, String key) {
-        super(context, key);
+    public ROMBuildDatePreferenceController(Context context, String preferenceKey) {
+        super(context, preferenceKey);
     }
 
     @Override
     public int getAvailabilityStatus() {
-        return AVAILABLE;
-    }
+        return !TextUtils.isEmpty(SystemProperties.get(PROPERTY_DERP_BUILD_DATE)) ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+   }
 
     @Override
     public CharSequence getSummary() {
-        //Preparing the date string, taken from com.android.settingslib.DeviceInfoUtils
-        String aosipVersion = SystemProperties.get(AOSIP_VERSION);
-        String zipbuildate = aosipVersion.substring(aosipVersion.length() - 15);
-        if (!zipbuildate.isEmpty()) {
-            try {
-                SimpleDateFormat template = new SimpleDateFormat("yyyyMMdd");
-                Date buildDate = template.parse(zipbuildate);
-                String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "dMMMMyyyy");
-                return DateFormat.format(format, buildDate).toString();
-            } catch (ParseException e) {
-                return mContext.getString(R.string.unknown);
-            }
-        }
-        return mContext.getString(R.string.unknown);
+        return SystemProperties.get(PROPERTY_DERP_BUILD_DATE,
+                mContext.getString(R.string.device_info_default));
+    }
+
+    @Override
+    public String getPreferenceKey() {
+        return KEY_DERP_BUILD_DATE;
     }
 }
 
