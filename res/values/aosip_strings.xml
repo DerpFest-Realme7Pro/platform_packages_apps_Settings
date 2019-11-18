@@ -14,6 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- AOSiP version -->
@@ -28,9 +29,6 @@
     <!-- Battery stats reset -->
     <string name="battery_stats_reset">Reset stats</string>
     <string name="battery_stats_message">Battery history stats are going to be reset</string>
-
-    <!-- AOSiP Version -->
-    <string name="aosip_version">DerpFest Build</string>
 
     <!-- Screenshot shutter -->
     <string name="screenshot_shutter_sound_title">Screenshot shutter sound</string>
@@ -169,18 +167,4 @@
     <string name="back_options_dialog_title">Options</string>
     <string name="back_height_message">Amount of screen height used as touchable region for back gesture.</string>
 
-    <!-- DerpFest extra data -->
-    <!-- Build date, parsed? -->
-    <string name="derp_build_date">Build date</string>
-    <!-- About phone screen, device maintainer name -->
-    <string name="device_maintainer">Who to blame (Maintainer)</string>
-    <!-- Build types, now with translations -->
-    <string name="derp_type_official">Official</string>
-    <string name="derp_type_unofficial">Unofficial</string>
-    <string name="derp_type_unknown">Unsupported. ¯\\_(ツ)_/¯</string>
-    <string name="derp_releasetype_skeleton">%s (%s)</string>
-    <!-- Build type info -->
-    <string name="derp_ri_title_buildtype">Build Type</string>
-    <string name="derp_ri_summary_buildtype">Your build is %s... or %s.</string>
-    <string name="derp_pref_title_rominfo">ROM Info</string>
 </resources>
