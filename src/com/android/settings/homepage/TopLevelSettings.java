@@ -656,6 +656,6 @@ public class TopLevelSettings extends DashboardFragment implements
             
     private void setDashboardStyle(Context context) {
         mDashBoardStyle = Settings.System.getIntForUser(context.getContentResolver(),
-                    Settings.System.SETTINGS_DASHBOARD_STYLE, 0, UserHandle.USER_CURRENT);
+                    Settings.System.SETTINGS_DASHBOARD_STYLE, 3, UserHandle.USER_CURRENT);
     }
 }

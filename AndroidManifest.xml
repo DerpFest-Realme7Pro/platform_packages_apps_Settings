@@ -4390,7 +4390,7 @@
         <!-- DerpSpace -->
         <activity android:name=".Settings$DerpSpaceSettingsActivity"
                   android:label="@string/derpspace_title"
-                  android:icon="@drawable/ic_homepage_fireworks"
+                  android:icon="@drawable/ic_homepage_derpspace"
                   android:exported="true"
                   android:parentActivityName="com.android.settings">
             <intent-filter>
@@ -4398,8 +4398,8 @@
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                        android:value="org.derpfest.derpspace.DerpSpace"/>
-            <meta-data android:name="com.android.settings.summary"
-                       android:resource="@string/build_tweaks_summary_title"/>
+            <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
+                       android:value="@string/menu_key_derp"/>
         </activity>
 
         <activity android:name=".Settings$HeadsUpSettingsActivity"
